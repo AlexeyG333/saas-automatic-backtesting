@@ -13,9 +13,9 @@ def home_page_view(request, *args, **kwargs):
     my_context = {
         "page_title": my_title,
         "page_visit_count": page_qs.count(),
+        "percent": (page_qs.count() * 100.0) / qs.count(),
         "total_visit_count": qs.count(),
     }
-    path = request.path
     print("path", path)
     html_template = "home.html"
     PageVisit.objects.create(path=request.path)
